@@ -321,7 +321,7 @@ const Hero = () => {
           setVideoLoaded(false);
         }}
       >
-        <source src="/assets/videos/herovideo1.mp4" type="video/mp4" />
+        <source src="/assets/videos/herovideo3.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </VideoBackground>
       <VideoOverlay />
