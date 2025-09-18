@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kama Travels - Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #003580 0%, #0066cc 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .status {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌟 Kama Travels</h1>
+    <p>Direct HTML Test Page</p>
+    <div class="status">
+        <h3>✅ GitHub Pages is Working!</h3>
+        <p>This confirms deployment pipeline is functional</p>
+        <p>React app will be restored next</p>
+        <p>Current time: <script>document.write(new Date().toLocaleString())</script></p>
+    </div>
+</body>
+</html>
