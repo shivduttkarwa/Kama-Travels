@@ -228,7 +228,7 @@ const PackagesPage = () => {
     <PageContainer>
       
       <HeroSection
-        backgroundImage="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
+        backgroundImage="/assets/images/packageshero.jpg"
         title="Travel Packages"
         subtitle="Discover carefully curated travel packages for unforgettable experiences worldwide."
         padding="140px 0 100px"

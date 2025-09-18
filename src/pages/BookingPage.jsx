@@ -11,7 +11,7 @@ const PageContainer = styled.div`
 const HeroSection = styled.section`
   position: relative;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%),
-              url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+              url('/assets/images/travelformhero.jpg') center/cover;
   color: white;
   padding: 140px 0 100px;
   text-align: center;

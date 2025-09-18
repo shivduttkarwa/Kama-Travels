@@ -14,7 +14,7 @@ const PageContainer = styled.div`
 const HeroSection = styled.section`
   position: relative;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%),
-              url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&h=800&fit=crop') center/cover;
+              url('/assets/images/destinationhero.jpg') center/cover;
   color: white;
   padding: 140px 0 100px;
   text-align: center;
