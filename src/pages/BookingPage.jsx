@@ -383,7 +383,7 @@ const BookingPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 99717 33192"
                     required
                   />
                 </FormGroup>

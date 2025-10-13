@@ -665,6 +665,7 @@ const Footer = () => {
                 <FooterList>
                   <li><Link to="/">About Us</Link></li>
                   <li><Link to="/destinations">Destinations</Link></li>
+                  <li><Link to="/locations">Locations</Link></li>
                   <li><Link to="/packages">Travel Packages</Link></li>
                   <li><Link to="/booking">Book Now</Link></li>
                   <li><Link to="/contact">Contact Us</Link></li>

@@ -176,8 +176,9 @@ This project is licensed under the MIT License.
 ## 📞 Support
 
 For support or questions, please contact:
-- Email: info@kamatravels.com
-- Website: [Kama Travels](https://kamatravels.com)
+- Email: kamatravelse@gmail.com
+- Phone: +91 99717 33192
+- Location: Jaipur, Rajasthan, India
 
 ---
 

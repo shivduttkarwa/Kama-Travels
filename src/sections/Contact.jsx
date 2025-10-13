@@ -286,7 +286,7 @@ const Contact = () => {
                 <div className="info">
                   <h4>Call Us</h4>
                   <p>Speak with our travel consultants</p>
-                  <a href="tel:+919876543210">+91 98765 43210</a>
+                  <a href="tel:+919971733192">+91 99717 33192</a>
                 </div>
               </ContactMethod>
 
@@ -297,7 +297,7 @@ const Contact = () => {
                 <div className="info">
                   <h4>Email Us</h4>
                   <p>Send us your travel inquiries</p>
-                  <a href="mailto:info@kamatravels.com">info@kamatravels.com</a>
+                  <a href="mailto:kamatravelse@gmail.com">kamatravelse@gmail.com</a>
                 </div>
               </ContactMethod>
 
@@ -308,7 +308,7 @@ const Contact = () => {
                 <div className="info">
                   <h4>Visit Our Office</h4>
                   <p>Meet us in person for detailed planning</p>
-                  <p>123 Travel Plaza, Connaught Place<br />New Delhi, India 110001</p>
+                  <p>Jaipur, Rajasthan, India</p>
                 </div>
               </ContactMethod>
             </ContactMethods>
@@ -354,7 +354,7 @@ const Contact = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 99717 33192"
                 />
               </FormGroup>
               <FormGroup>

@@ -276,10 +276,10 @@ const CancellationPolicyPage = () => {
           <h3>Need Help with Cancellation?</h3>
           <p>Contact our customer support team for assistance</p>
           <p>
-            Email: <a href="mailto:cancellations@kamatravels.com">cancellations@kamatravels.com</a>
+            Email: <a href="mailto:kamatravelse@gmail.com">kamatravelse@gmail.com</a>
           </p>
           <p>
-            Phone: <a href="tel:+91-XXXX-XXXX-XX">+91-XXXX-XXXX-XX</a>
+            Phone: <a href="tel:+919971733192">+91 99717 33192</a>
           </p>
           <p>Working Hours: 9:00 AM - 6:00 PM (Mon-Sat)</p>
         </ContactInfo>

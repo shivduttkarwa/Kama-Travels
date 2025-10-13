@@ -154,7 +154,7 @@ const PrivacyPolicyPage = () => {
           <SectionTitle>Contact Us</SectionTitle>
           <Paragraph>
             If you have any questions about this Privacy Policy or our privacy practices, 
-            please contact us at privacy@kamatravels.com or call us at +91-XXXX-XXXX-XX.
+            please contact us at kamatravelse@gmail.com or call us at +91 99717 33192.
           </Paragraph>
         </ContentSection>
 

@@ -500,8 +500,7 @@ const ContactPage = () => {
                 </InfoIcon>
                 <InfoContent>
                   <InfoLabel>Phone</InfoLabel>
-                  <InfoValue>+91 98765 43210</InfoValue>
-                  <InfoValue>+91 87654 32109</InfoValue>
+                  <InfoValue>+91 99717 33192</InfoValue>
                 </InfoContent>
               </InfoItem>
               
@@ -514,8 +513,7 @@ const ContactPage = () => {
                 </InfoIcon>
                 <InfoContent>
                   <InfoLabel>Email</InfoLabel>
-                  <InfoValue>info@kamatravels.com</InfoValue>
-                  <InfoValue>support@kamatravels.com</InfoValue>
+                  <InfoValue>kamatravelse@gmail.com</InfoValue>
                 </InfoContent>
               </InfoItem>
               
@@ -529,9 +527,8 @@ const ContactPage = () => {
                 <InfoContent>
                   <InfoLabel>Office Address</InfoLabel>
                   <InfoValue>
-                    123 Travel Street,<br />
-                    Tourism District,<br />
-                    Mumbai, Maharashtra 400001
+                    Jaipur,<br />
+                    Rajasthan, India
                   </InfoValue>
                 </InfoContent>
               </InfoItem>

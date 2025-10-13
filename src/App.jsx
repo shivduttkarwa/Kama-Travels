@@ -12,6 +12,7 @@ import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import PackagesPage from './pages/PackagesPage';
 import PackageDetailPage from './pages/PackageDetailPage';
+import LocationsPage from './pages/LocationsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import FAQPage from './pages/FAQPage';
 import CancellationPolicyPage from './pages/CancellationPolicyPage';
@@ -429,6 +430,7 @@ const AppContent = () => {
           <Route path="/packages" element={<SimplePageTransition><PackagesPage /></SimplePageTransition>} />
           <Route path="/packages/:slug" element={<SimplePageTransition><PackageDetailPage /></SimplePageTransition>} />
           <Route path="/services" element={<SimplePageTransition><ServicesPage /></SimplePageTransition>} />
+          <Route path="/locations" element={<SimplePageTransition><LocationsPage /></SimplePageTransition>} />
           <Route path="/contact" element={<SimplePageTransition><ContactPage /></SimplePageTransition>} />
           <Route path="/booking" element={<SimplePageTransition><BookingPage /></SimplePageTransition>} />
           <Route path="/privacy-policy" element={<SimplePageTransition><PrivacyPolicyPage /></SimplePageTransition>} />
