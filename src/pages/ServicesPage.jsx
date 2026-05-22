@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { theme, Container, Section, SectionTitle } from '../styles/GlobalStyles';
+
+const BASE = import.meta.env.BASE_URL;
 import HeroSection from '../components/HeroSection';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -338,7 +340,7 @@ const ServicesPage = () => {
     <PageContainer>
       
       <HeroSection
-        backgroundImage="/assets/images/serviceshero.jpg"
+        backgroundImage={`${BASE}assets/images/serviceshero.jpg`}
         title="Our Travel Services"
         subtitle="Comprehensive travel solutions for seamless and unforgettable journeys."
         animatedPattern={true}

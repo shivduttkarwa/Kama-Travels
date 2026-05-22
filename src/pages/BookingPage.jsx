@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { theme, Container } from '../styles/GlobalStyles';
 
+const BASE = import.meta.env.BASE_URL;
+
 const PageContainer = styled.div`
   min-height: 100vh;
   background: ${theme.colors.background};
@@ -11,7 +13,7 @@ const PageContainer = styled.div`
 const HeroSection = styled.section`
   position: relative;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%),
-              url('/assets/images/travelformhero.jpg') center/cover;
+              url('${BASE}assets/images/travelformhero.jpg') center/cover;
   color: white;
   padding: 140px 0 100px;
   text-align: center;

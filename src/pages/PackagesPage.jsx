@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const BASE = import.meta.env.BASE_URL;
 import HeroSection from '../components/HeroSection';
 import { theme } from '../styles/GlobalStyles';
 import { packages } from '../data/packages';
@@ -228,7 +230,7 @@ const PackagesPage = () => {
     <PageContainer>
       
       <HeroSection
-        backgroundImage="/assets/images/packageshero.jpg"
+        backgroundImage={`${BASE}assets/images/packageshero.jpg`}
         title="Travel Packages"
         subtitle="Discover carefully curated travel packages for unforgettable experiences worldwide."
         padding="140px 0 100px"

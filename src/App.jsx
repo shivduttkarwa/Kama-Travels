@@ -26,10 +26,6 @@ import Footer from './components/Footer';
 // Styles
 import { theme } from './styles/GlobalStyles';
 
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
-
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const GlobalStyle = createGlobalStyle`

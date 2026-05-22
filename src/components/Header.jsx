@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { theme } from '../styles/GlobalStyles';
 
+const BASE = import.meta.env.BASE_URL;
+
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
@@ -140,7 +142,7 @@ const NavLinks = styled.div`
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('/assets/images/hero-fallback.jpg') center/cover;
+      background: url('${BASE}assets/images/hero-fallback.jpg') center/cover;
       opacity: 0.1;
       z-index: -1;
     }
@@ -546,7 +548,7 @@ const Header = () => {
       <Nav>
         <Logo>
           <LogoLink to="/">
-            <img src="/assets/logo/KAMA TRAVELS LOGO.png" alt="Kama Travels" />
+            <img src={`${BASE}assets/logo/KAMA TRAVELS LOGO.png`} alt="Kama Travels" />
           </LogoLink>
         </Logo>
         

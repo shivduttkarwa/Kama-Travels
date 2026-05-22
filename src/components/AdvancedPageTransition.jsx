@@ -34,14 +34,6 @@ const SimplePageTransition = ({ children }) => {
       </PageWrapper>
     </TransitionContainer>
   );
-
-  return (
-    <TransitionContainer>
-      <PageWrapper ref={wrapperRef}>
-        {children}
-      </PageWrapper>
-    </TransitionContainer>
-  );
 };
 
 export default SimplePageTransition;

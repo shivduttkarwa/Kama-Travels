@@ -4,6 +4,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { theme, Container } from '../styles/GlobalStyles';
 
+const BASE = import.meta.env.BASE_URL;
+
 gsap.registerPlugin(ScrollTrigger);
 
 const PageContainer = styled.div`
@@ -14,7 +16,7 @@ const PageContainer = styled.div`
 const HeroSection = styled.section`
   position: relative;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%),
-              url('/assets/images/contacthero.jpg') center/cover;
+              url('${BASE}assets/images/contacthero.jpg') center/cover;
   color: white;
   padding: 140px 0 100px;
   text-align: center;
