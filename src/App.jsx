@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
+
+export const AppReadyContext = createContext(false);
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -406,7 +408,7 @@ const AppContent = () => {
   }, [location.pathname, hasInitialLoad]);
 
   return (
-    <>
+    <AppReadyContext.Provider value={!isLoading}>
       {isLoading && (
         <LoadingOverlay>
           <LoaderContainer>
@@ -417,7 +419,7 @@ const AppContent = () => {
           </LoaderContainer>
         </LoadingOverlay>
       )}
-      
+
       <AppContainer>
         <Header />
         <Routes>
@@ -436,7 +438,7 @@ const AppContent = () => {
         </Routes>
         <Footer />
       </AppContainer>
-    </>
+    </AppReadyContext.Provider>
   );
 };
 

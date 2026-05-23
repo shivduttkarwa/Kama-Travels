@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { theme, Container, Section } from '../styles/GlobalStyles';
+import { AppReadyContext } from '../App';
 
 const HeroContainer = styled(Section)`
   min-height: 100vh;
@@ -193,10 +194,18 @@ const Hero = () => {
   const buttonsRef = useRef();
   const videoRef = useRef();
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const appReady = useContext(AppReadyContext);
+
+  // Hide elements immediately so they don't flash before animation
+  useEffect(() => {
+    gsap.set([titleRef.current, subtitleRef.current, ...Array.from(buttonsRef.current.children)], { opacity: 0 });
+  }, []);
 
   useEffect(() => {
+    if (!appReady) return;
+
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.5 });
+      const tl = gsap.timeline({ delay: 0.2 });
       
       tl.fromTo(titleRef.current, 
         {
@@ -208,7 +217,7 @@ const Hero = () => {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 1.2,
+          duration: 2,
           ease: "power3.out"
         }
       )
@@ -244,7 +253,7 @@ const Hero = () => {
     }, heroRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [appReady]);
 
   // Handle mobile video playback issues
   useEffect(() => {
