@@ -396,7 +396,7 @@ const AppContent = () => {
       const timer = setTimeout(() => {
         setIsLoading(false);
         setHasInitialLoad(true);
-      }, 400); // Even shorter to prevent double fade
+      }, 2000);
 
       return () => clearTimeout(timer);
     } else {
