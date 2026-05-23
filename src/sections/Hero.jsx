@@ -217,8 +217,8 @@ const Hero = () => {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 2,
-          ease: "power3.out"
+          duration: 1.4,
+          ease: "back.out(1.4)"
         }
       )
       .fromTo(subtitleRef.current,
