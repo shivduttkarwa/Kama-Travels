@@ -11,14 +11,14 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.98)' : 'white'};
-  backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
+  background: ${props => props.$scrolled ? 'rgba(255, 255, 255, 0.98)' : 'white'};
+  backdrop-filter: ${props => props.$scrolled ? 'blur(10px)' : 'none'};
   transition: all 0.2s ease;
-  border-bottom: 1px solid ${props => props.scrolled ? theme.colors.border : 'transparent'};
-  box-shadow: ${props => props.scrolled ? theme.shadows.small : 'none'};
+  border-bottom: 1px solid ${props => props.$scrolled ? theme.colors.border : 'transparent'};
+  box-shadow: ${props => props.$scrolled ? theme.shadows.small : 'none'};
   
   @media (max-width: ${theme.breakpoints.tablet}) {
-    z-index: ${props => props.menuOpen ? '1002' : '1000'};
+    z-index: ${props => props.$menuOpen ? '1002' : '1000'};
   }
 `;
 
@@ -130,9 +130,9 @@ const NavLinks = styled.div`
     padding: 0px 40px 330px 37px;
     gap: 25px;
     z-index: 999;
-    transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'};
+    transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(100%)'};
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    pointer-events: ${props => props.isOpen ? 'auto' : 'none'};
+    pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
     
     &::before {
       content: '';
@@ -526,7 +526,7 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer scrolled={scrolled} menuOpen={isMenuOpen}>
+    <HeaderContainer $scrolled={scrolled} $menuOpen={isMenuOpen}>
       <Nav>
         <Logo>
           <LogoLink to="/">
@@ -534,7 +534,7 @@ const Header = () => {
           </LogoLink>
         </Logo>
         
-        <NavLinks isOpen={isMenuOpen}>
+        <NavLinks $isOpen={isMenuOpen}>
           <NavLink 
             className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`}
             onClick={() => handleSmoothNavigation('/')}

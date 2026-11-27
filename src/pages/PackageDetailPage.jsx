@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { theme } from '../styles/GlobalStyles';
 import { packages } from '../data/packages';
+import useHeroReveal from '../hooks/useHeroReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ const PageContainer = styled.div`
 
 const HeroSection = styled.section`
   padding: 140px 0 100px;
-  background: ${props => props.bgImage ? `linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url(${props.bgImage})` : `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})`};
+  background: ${props => props.$bgImage ? `linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url(${props.$bgImage})` : `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})`};
   background-size: cover;
   background-position: center;
   display: flex;
@@ -230,7 +231,7 @@ const InclusionItem = styled.li`
 `;
 
 const InclusionIcon = styled.span`
-  color: ${props => props.excluded ? '#e74c3c' : '#27ae60'};
+  color: ${props => props.$excluded ? '#e74c3c' : '#27ae60'};
   font-weight: bold;
 `;
 
@@ -325,6 +326,8 @@ const PackageDetailPage = () => {
 
   const packageData = packages.find(pkg => pkg.slug === slug);
 
+  useHeroReveal(() => contentRef.current?.querySelectorAll('.fade-in') ?? [], [packageData]);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [slug]);
@@ -336,30 +339,7 @@ const PackageDetailPage = () => {
     
     if (!packageData) {
       navigate('/packages');
-      return;
     }
-
-    const timer = setTimeout(() => {
-      const ctx = gsap.context(() => {
-        gsap.fromTo('.fade-in',
-          { opacity: 0, y: 30 },
-          { 
-            opacity: 1, 
-            y: 0, 
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            delay: 0.3
-          }
-        );
-      }, contentRef);
-      
-      return () => ctx.revert();
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-    };
   }, [packageData, navigate]);
 
   if (!packageData) {
@@ -376,7 +356,7 @@ const PackageDetailPage = () => {
 
   return (
     <PageContainer ref={contentRef}>
-      <HeroSection bgImage={packageData.image}>
+      <HeroSection $bgImage={packageData.image}>
         <BackButton to="/packages">
           ← Back to Packages
         </BackButton>
@@ -445,7 +425,7 @@ const PackageDetailPage = () => {
                   <InclusionList>
                     {packageData.exclusions.map((item, index) => (
                       <InclusionItem key={index}>
-                        <InclusionIcon excluded>✗</InclusionIcon>
+                        <InclusionIcon $excluded>✗</InclusionIcon>
                         {item}
                       </InclusionItem>
                     ))}

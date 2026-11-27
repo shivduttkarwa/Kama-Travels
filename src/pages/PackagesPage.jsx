@@ -35,8 +35,8 @@ const FilterBar = styled.div`
 `;
 
 const FilterButton = styled.button`
-  background: ${props => props.active ? theme.colors.primary : 'transparent'};
-  color: ${props => props.active ? 'white' : theme.colors.textPrimary};
+  background: ${props => props.$active ? theme.colors.primary : 'transparent'};
+  color: ${props => props.$active ? 'white' : theme.colors.textPrimary};
   border: 2px solid ${theme.colors.primary};
   padding: 12px 24px;
   border-radius: ${theme.borderRadius.medium};
@@ -77,7 +77,7 @@ const PackageCard = styled.div`
 
 const PackageImage = styled.div`
   height: 250px;
-  background: ${props => `url(${props.image}) center/cover`};
+  background: ${props => `url(${props.$image}) center/cover`};
   position: relative;
 `;
 
@@ -183,22 +183,10 @@ const ViewDetailsButton = styled(Link)`
 
 const PackagesPage = () => {
   const sectionRef = useRef();
-  const titleRef = useRef();
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.2
-        }
-      );
-
       gsap.fromTo('.package-card',
         { opacity: 0, y: 50 },
         {
@@ -232,26 +220,25 @@ const PackagesPage = () => {
         title="Travel Packages"
         subtitle="Discover carefully curated travel packages for unforgettable experiences worldwide."
         padding="140px 0 100px"
-        titleRef={titleRef}
       />
 
       <PackagesSection ref={sectionRef}>
         <Container>
           <FilterBar>
             <FilterButton 
-              active={filter === 'all'} 
+              $active={filter === 'all'} 
               onClick={() => setFilter('all')}
             >
               All Packages
             </FilterButton>
             <FilterButton 
-              active={filter === 'india'} 
+              $active={filter === 'india'} 
               onClick={() => setFilter('india')}
             >
               India Tours
             </FilterButton>
             <FilterButton 
-              active={filter === 'international'} 
+              $active={filter === 'international'} 
               onClick={() => setFilter('international')}
             >
               International
@@ -264,7 +251,7 @@ const PackagesPage = () => {
                 key={pkg.id}
                 className="package-card"
               >
-                <PackageImage image={pkg.image}>
+                <PackageImage $image={pkg.image}>
                   <PackageBadge>{pkg.badge}</PackageBadge>
                 </PackageImage>
                 

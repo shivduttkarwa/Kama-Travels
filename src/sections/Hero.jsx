@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState, useContext } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { gsap } from 'gsap';
 import { theme, Container, Section } from '../styles/GlobalStyles';
-import { AppReadyContext } from '../App';
+import useHeroReveal from '../hooks/useHeroReveal';
 
 const HeroContainer = styled(Section)`
   min-height: 100vh;
@@ -26,7 +25,7 @@ const VideoBackground = styled.video`
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: ${props => props.loaded ? 1 : 0};
+  opacity: ${props => props.$loaded ? 1 : 0};
   transition: opacity 0.8s ease-in-out;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
@@ -43,7 +42,7 @@ const VideoPlaceholder = styled.div`
   height: 100%;
   background: linear-gradient(135deg, #003580 0%, #0066cc 50%, #1a73e8 100%);
   z-index: 0;
-  opacity: ${props => props.videoLoaded ? 0 : 1};
+  opacity: ${props => props.$videoLoaded ? 0 : 1};
   transition: opacity 0.8s ease-in-out;
 `;
 
@@ -195,35 +194,12 @@ const Hero = () => {
   const buttonsRef = useRef();
   const videoRef = useRef();
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const appReady = useContext(AppReadyContext);
 
-  const getRevealItems = () => [
+  useHeroReveal(() => [
     titleRef.current,
     subtitleRef.current,
-    ...Array.from(buttonsRef.current.children),
-  ];
-
-  useEffect(() => {
-    gsap.set(getRevealItems(), { opacity: 0, y: 30 });
-  }, []);
-
-  useEffect(() => {
-    if (!appReady) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(getRevealItems(), {
-        opacity: 1,
-        y: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        stagger: 0.15,
-        delay: 0.2,
-        force3D: true,
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, [appReady]);
+    ...Array.from(buttonsRef.current?.children ?? []),
+  ]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -265,7 +241,7 @@ const Hero = () => {
 
   return (
     <HeroContainer id="hero" ref={heroRef}>
-      <VideoPlaceholder videoLoaded={videoLoaded} />
+      <VideoPlaceholder $videoLoaded={videoLoaded} />
       <VideoBackground 
         ref={videoRef}
         autoPlay 
@@ -275,18 +251,12 @@ const Hero = () => {
         preload="auto"
         controls={false}
         disablePictureInPicture
-        loaded={videoLoaded}
+        $loaded={videoLoaded}
         onLoadedData={() => {
           setVideoLoaded(true);
         }}
         onCanPlay={() => {
           setVideoLoaded(true);
-        }}
-        onLoadStart={(e) => {
-          const video = e.target;
-          video.play().catch(() => {
-            console.log('Video autoplay failed, using background');
-          });
         }}
         onError={() => {
           console.log('Video failed to load');

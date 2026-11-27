@@ -21,17 +21,17 @@ const FilterTabs = styled.div`
 
 const FilterTab = styled.button`
   padding: 12px 24px;
-  background: ${props => props.active ? theme.colors.primary : 'white'};
-  color: ${props => props.active ? 'white' : theme.colors.textSecondary};
-  border: 1px solid ${props => props.active ? theme.colors.primary : theme.colors.border};
+  background: ${props => props.$active ? theme.colors.primary : 'white'};
+  color: ${props => props.$active ? 'white' : theme.colors.textSecondary};
+  border: 1px solid ${props => props.$active ? theme.colors.primary : theme.colors.border};
   border-radius: ${theme.borderRadius.medium};
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   
   &:hover {
-    background: ${props => props.active ? theme.colors.navy : theme.colors.lightBlue};
-    color: ${props => props.active ? 'white' : theme.colors.primary};
+    background: ${props => props.$active ? theme.colors.navy : theme.colors.lightBlue};
+    color: ${props => props.$active ? 'white' : theme.colors.primary};
     border-color: ${theme.colors.primary};
   }
 `;
@@ -63,7 +63,7 @@ const DestinationCard = styled.div`
 const CardImage = styled.div`
   width: 100%;
   height: 192px;
-  background-image: url(${props => props.image});
+  background-image: url(${props => props.$image});
   background-size: cover;
   background-position: center;
   position: relative;
@@ -201,9 +201,9 @@ const ActionButtonsContainer = styled.div`
 `;
 
 const ActionButton = styled(Link)`
-  background: ${props => props.primary ? `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})` : 'transparent'};
-  color: ${props => props.primary ? 'white' : theme.colors.primary};
-  border: ${props => props.primary ? 'none' : `2px solid ${theme.colors.primary}`};
+  background: ${props => props.$primary ? `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})` : 'transparent'};
+  color: ${props => props.$primary ? 'white' : theme.colors.primary};
+  border: ${props => props.$primary ? 'none' : `2px solid ${theme.colors.primary}`};
   padding: 16px 24px;
   border-radius: ${theme.borderRadius.medium};
   font-size: 1rem;
@@ -224,7 +224,7 @@ const ActionButton = styled(Link)`
   &:hover {
     transform: translateY(-2px);
     box-shadow: ${theme.shadows.medium};
-    background: ${props => props.primary ? `linear-gradient(135deg, ${theme.colors.navy}, ${theme.colors.primary})` : theme.colors.primary};
+    background: ${props => props.$primary ? `linear-gradient(135deg, ${theme.colors.navy}, ${theme.colors.primary})` : theme.colors.primary};
     color: white;
   }
 `;
@@ -385,7 +385,7 @@ const Destinations = () => {
           {categories.map((category) => (
             <FilterTab
               key={category}
-              active={activeFilter === category}
+              $active={activeFilter === category}
               onClick={() => setActiveFilter(category)}
             >
               {category}
@@ -397,7 +397,7 @@ const Destinations = () => {
           {filteredDestinations.map((destination) => (
             <DestinationCard key={destination.id} className="destination-card">
               <Badge>{destination.badge}</Badge>
-              <CardImage image={destination.image} />
+              <CardImage $image={destination.image} />
               <CardContent>
                 <CardHeader>
                   <DestinationInfo>
@@ -424,7 +424,7 @@ const Destinations = () => {
         
         <ActionButtonsContainer>
           <ActionButton to="/destinations">View More Destinations</ActionButton>
-          <ActionButton to="/packages" primary>View All Packages</ActionButton>
+          <ActionButton to="/packages" $primary>View All Packages</ActionButton>
         </ActionButtonsContainer>
       </Container>
     </DestinationsContainer>

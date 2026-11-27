@@ -294,21 +294,9 @@ const services = [
 
 const ServicesPage = () => {
   const sectionRef = useRef();
-  const titleRef = useRef();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.2
-        }
-      );
-
       gsap.fromTo('.service-card',
         { opacity: 0, y: 50 },
         {
@@ -343,7 +331,6 @@ const ServicesPage = () => {
         subtitle="Comprehensive travel solutions for seamless and unforgettable journeys."
         animatedPattern={true}
         padding="140px 0 100px"
-        titleRef={titleRef}
       />
 
       <ServicesSection ref={sectionRef}>

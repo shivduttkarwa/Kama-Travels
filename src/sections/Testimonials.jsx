@@ -34,8 +34,8 @@ const TestimonialSlider = styled.div`
 `;
 
 const TestimonialSlide = styled.div`
-  display: ${props => props.active ? 'block' : 'none'};
-  animation: ${props => props.active ? 'fadeIn 1s ease-in-out' : 'none'};
+  display: ${props => props.$active ? 'block' : 'none'};
+  animation: ${props => props.$active ? 'fadeIn 1s ease-in-out' : 'none'};
   
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -158,7 +158,7 @@ const Dot = styled.button`
   height: 12px;
   border-radius: 50%;
   border: 2px solid ${theme.colors.border};
-  background: ${props => props.active ? theme.colors.primary : 'transparent'};
+  background: ${props => props.$active ? theme.colors.primary : 'transparent'};
   cursor: pointer;
   transition: all 0.3s ease;
   
@@ -300,7 +300,7 @@ const Testimonials = () => {
         >
           <TestimonialSlider>
             {testimonialData.map((testimonial, index) => (
-              <TestimonialSlide key={testimonial.id} active={index === currentSlide}>
+              <TestimonialSlide key={testimonial.id} $active={index === currentSlide}>
                 <QuoteContainer>
                   <Quote>
                     <Blockquote>
@@ -330,7 +330,7 @@ const Testimonials = () => {
               {testimonialData.map((_, index) => (
                 <Dot
                   key={index}
-                  active={index === currentSlide}
+                  $active={index === currentSlide}
                   onClick={() => goToSlide(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />

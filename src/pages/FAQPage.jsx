@@ -75,11 +75,11 @@ const Icon = styled.span`
   font-size: 1.2rem;
   color: ${theme.colors.primary};
   transition: transform 0.3s ease;
-  transform: ${props => props.isOpen ? 'rotate(45deg)' : 'rotate(0deg)'};
+  transform: ${props => props.$isOpen ? 'rotate(45deg)' : 'rotate(0deg)'};
 `;
 
 const Answer = styled.div`
-  max-height: ${props => props.isOpen ? '500px' : '0'};
+  max-height: ${props => props.$isOpen ? '500px' : '0'};
   overflow: hidden;
   transition: max-height 0.3s ease;
   
@@ -179,9 +179,9 @@ const FAQPage = () => {
             <FAQItem key={index}>
               <Question onClick={() => toggleItem(index)}>
                 {faq.question}
-                <Icon isOpen={openItem === index}>+</Icon>
+                <Icon $isOpen={openItem === index}>+</Icon>
               </Question>
-              <Answer isOpen={openItem === index}>
+              <Answer $isOpen={openItem === index}>
                 <p>{faq.answer}</p>
               </Answer>
             </FAQItem>

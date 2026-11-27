@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { theme, Container, Section, SectionTitle } from '../styles/GlobalStyles';
+import useHeroReveal from '../hooks/useHeroReveal';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -51,18 +52,6 @@ const HeroTitle = styled.h1`
   font-weight: 700;
   margin-bottom: 20px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-  animation: heroSlideUp 1s ease-out;
-  
-  @keyframes heroSlideUp {
-    0% {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -76,7 +65,6 @@ const HeroSubtitle = styled.p`
   margin: 0 auto;
   line-height: 1.6;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  animation: heroSlideUp 1s ease-out 0.2s both;
   
   @media (max-width: 768px) {
     font-size: 1.25rem;
@@ -98,17 +86,17 @@ const FilterTabs = styled.div`
 
 const FilterTab = styled.button`
   padding: 12px 24px;
-  background: ${props => props.active ? theme.colors.primary : 'white'};
-  color: ${props => props.active ? 'white' : theme.colors.textSecondary};
-  border: 1px solid ${props => props.active ? theme.colors.primary : theme.colors.border};
+  background: ${props => props.$active ? theme.colors.primary : 'white'};
+  color: ${props => props.$active ? 'white' : theme.colors.textSecondary};
+  border: 1px solid ${props => props.$active ? theme.colors.primary : theme.colors.border};
   border-radius: ${theme.borderRadius.medium};
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   
   &:hover {
-    background: ${props => props.active ? theme.colors.navy : theme.colors.lightBlue};
-    color: ${props => props.active ? 'white' : theme.colors.primary};
+    background: ${props => props.$active ? theme.colors.navy : theme.colors.lightBlue};
+    color: ${props => props.$active ? 'white' : theme.colors.primary};
     border-color: ${theme.colors.primary};
   }
 `;
@@ -138,7 +126,7 @@ const DestinationCard = styled.div`
 const CardImage = styled.div`
   width: 100%;
   height: 250px;
-  background-image: url(${props => props.image});
+  background-image: url(${props => props.$image});
   background-size: cover;
   background-position: center;
   position: relative;
@@ -542,20 +530,11 @@ const DestinationsPage = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const sectionRef = useRef();
   const titleRef = useRef();
+  const subtitleRef = useRef();
+  useHeroReveal(() => [titleRef.current, subtitleRef.current]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.2
-        }
-      );
-
       gsap.fromTo('.destination-card',
         { opacity: 0, y: 50 },
         {
@@ -595,7 +574,7 @@ const DestinationsPage = () => {
         <Container>
           <HeroContent>
             <HeroTitle ref={titleRef}>Discover Amazing Destinations</HeroTitle>
-            <HeroSubtitle>
+            <HeroSubtitle ref={subtitleRef}>
               Explore breathtaking locations across India and beyond. Find your perfect getaway.
             </HeroSubtitle>
           </HeroContent>
@@ -610,7 +589,7 @@ const DestinationsPage = () => {
             {categories.map((category) => (
               <FilterTab
                 key={category}
-                active={activeFilter === category}
+                $active={activeFilter === category}
                 onClick={() => setActiveFilter(category)}
               >
                 {category}
@@ -622,7 +601,7 @@ const DestinationsPage = () => {
             {filteredDestinations.map((destination) => (
               <DestinationCard key={destination.id} className="destination-card">
                 <Badge>{destination.badge}</Badge>
-                <CardImage image={destination.image} />
+                <CardImage $image={destination.image} />
                 <CardContent>
                   <CardHeader>
                     <DestinationName>{destination.name}</DestinationName>

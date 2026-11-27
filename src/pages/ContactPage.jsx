@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { theme, Container } from '../styles/GlobalStyles';
+import useHeroReveal from '../hooks/useHeroReveal';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -46,18 +47,6 @@ const HeroTitle = styled.h1`
   font-weight: 700;
   margin-bottom: 20px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-  animation: heroSlideUp 1s ease-out;
-  
-  @keyframes heroSlideUp {
-    0% {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -71,7 +60,6 @@ const HeroSubtitle = styled.p`
   margin: 0 auto;
   line-height: 1.6;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  animation: heroSlideUp 1s ease-out 0.2s both;
   
   @media (max-width: 768px) {
     font-size: 1.25rem;
@@ -307,6 +295,8 @@ const SuccessMessage = styled.div`
 const ContactPage = () => {
   const sectionRef = useRef();
   const titleRef = useRef();
+  const subtitleRef = useRef();
+  useHeroReveal(() => [titleRef.current, subtitleRef.current]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -319,17 +309,6 @@ const ContactPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.2
-        }
-      );
-
       gsap.fromTo('.contact-item',
         { opacity: 0, y: 50 },
         {
@@ -387,7 +366,7 @@ const ContactPage = () => {
         <Container>
           <HeroContent>
             <HeroTitle ref={titleRef}>Get in Touch</HeroTitle>
-            <HeroSubtitle>
+            <HeroSubtitle ref={subtitleRef}>
               Ready for your next adventure? Our travel experts are here to help you plan the perfect journey.
             </HeroSubtitle>
           </HeroContent>
