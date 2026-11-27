@@ -115,6 +115,10 @@ const CTAButtons = styled.div`
   }
 `;
 
+const CTAItem = styled.div`
+  display: flex;
+`;
+
 const PrimaryButton = styled.button`
   background: ${theme.colors.primary};
   color: white;
@@ -161,7 +165,7 @@ const ScrollIndicator = styled.div`
   transform: translateX(-50%);
   color: white;
   text-align: center;
-  animation: bounce 2s infinite;
+  animation: heroCueFloat 3s ease-in-out infinite;
   cursor: pointer;
   
   .text {
@@ -174,15 +178,12 @@ const ScrollIndicator = styled.div`
     font-size: 1.5rem;
   }
   
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+  @keyframes heroCueFloat {
+    0%, 100% {
       transform: translateX(-50%) translateY(0);
     }
-    40% {
-      transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-      transform: translateX(-50%) translateY(-5px);
+    50% {
+      transform: translateX(-50%) translateY(-4px);
     }
   }
 `;
@@ -196,60 +197,29 @@ const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const appReady = useContext(AppReadyContext);
 
-  // Hide elements immediately so they don't flash before animation
+  const getRevealItems = () => [
+    titleRef.current,
+    subtitleRef.current,
+    ...Array.from(buttonsRef.current.children),
+  ];
+
   useEffect(() => {
-    gsap.set([titleRef.current, subtitleRef.current, ...Array.from(buttonsRef.current.children)], { opacity: 0 });
+    gsap.set(getRevealItems(), { opacity: 0, y: 30 });
   }, []);
 
   useEffect(() => {
     if (!appReady) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.2 });
-      
-      tl.fromTo(titleRef.current, 
-        {
-          opacity: 0,
-          y: 80,
-          scale: 0.8
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.4,
-          ease: "back.out(1.4)"
-        }
-      )
-      .fromTo(subtitleRef.current,
-        {
-          opacity: 0,
-          y: 30
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out"
-        },
-        "-=0.6"
-      )
-      .fromTo(buttonsRef.current.children,
-        {
-          opacity: 0,
-          y: 30,
-          scale: 0.9
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.2
-        },
-        "-=0.4"
-      );
+      gsap.to(getRevealItems(), {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        ease: "power3.out",
+        stagger: 0.15,
+        delay: 0.2,
+        force3D: true,
+      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -345,12 +315,16 @@ const Hero = () => {
           </HeroSubtitle>
           
           <CTAButtons ref={buttonsRef}>
-            <PrimaryButton onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
-              Start Planning
-            </PrimaryButton>
-            <SecondaryButton onClick={() => document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' })}>
-              Explore
-            </SecondaryButton>
+            <CTAItem>
+              <PrimaryButton onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
+                Start Planning
+              </PrimaryButton>
+            </CTAItem>
+            <CTAItem>
+              <SecondaryButton onClick={() => document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' })}>
+                Explore
+              </SecondaryButton>
+            </CTAItem>
           </CTAButtons>
         </HeroContent>
       </Container>
