@@ -319,7 +319,6 @@ const ContactPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate title
       gsap.fromTo(titleRef.current,
         { opacity: 0, y: 30 },
         { 
@@ -331,7 +330,6 @@ const ContactPage = () => {
         }
       );
 
-      // Animate contact sections
       gsap.fromTo('.contact-item',
         { opacity: 0, y: 50 },
         {
@@ -365,7 +363,6 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -377,7 +374,6 @@ const ContactPage = () => {
         message: ''
       });
       
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);

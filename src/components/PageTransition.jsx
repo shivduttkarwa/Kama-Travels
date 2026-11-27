@@ -108,7 +108,6 @@ const PageTransition = ({ children }) => {
 
   useEffect(() => {
     if (isFirstRender.current) {
-      // First render - elegant fade in
       isFirstRender.current = false;
       
       gsap.set(wrapperRef.current, { 
@@ -128,7 +127,6 @@ const PageTransition = ({ children }) => {
       return;
     }
 
-    // Advanced page transition
     const tl = gsap.timeline({
       onStart: () => {
         if (containerRef.current) {
@@ -142,7 +140,6 @@ const PageTransition = ({ children }) => {
       }
     });
 
-    // Reset panel positions
     gsap.set([panel1Ref.current, panel2Ref.current, panel3Ref.current], {
       x: '-100%'
     });
@@ -151,7 +148,6 @@ const PageTransition = ({ children }) => {
     gsap.set(panel3Ref.current, { x: '-120%' });
     gsap.set(loadingRef.current, { opacity: 0, scale: 0.8 });
 
-    // 1. Fade out current page with subtle scale
     tl.to(wrapperRef.current, {
       opacity: 0,
       scale: 0.95,
@@ -160,7 +156,6 @@ const PageTransition = ({ children }) => {
       ease: "power2.in"
     })
     
-    // 2. Slide panels in with staggered timing
     .to(panel1Ref.current, {
       x: '0%',
       duration: 0.6,
@@ -179,7 +174,6 @@ const PageTransition = ({ children }) => {
       ease: "power3.inOut"
     }, "-=0.4")
     
-    // 3. Show loading element briefly
     .to(loadingRef.current, {
       opacity: 1,
       scale: 1,
@@ -187,10 +181,8 @@ const PageTransition = ({ children }) => {
       ease: "back.out(1.7)"
     }, "-=0.3")
     
-    // 4. Hold for a moment
     .to({}, { duration: 0.2 })
     
-    // 5. Hide loading and prepare new content
     .to(loadingRef.current, {
       opacity: 0,
       scale: 0.8,
@@ -204,7 +196,6 @@ const PageTransition = ({ children }) => {
       opacity: 0
     })
     
-    // 6. Slide panels out in reverse order
     .to(panel3Ref.current, {
       x: '100%',
       duration: 0.6,
@@ -223,7 +214,6 @@ const PageTransition = ({ children }) => {
       ease: "power3.inOut"
     }, "-=0.4")
     
-    // 7. Fade in new page with elegant entrance
     .to(wrapperRef.current, {
       opacity: 1,
       y: 0,
@@ -232,7 +222,6 @@ const PageTransition = ({ children }) => {
       ease: "power3.out"
     }, "-=0.4");
 
-    // Smooth scroll to top
     if (window.pageYOffset > 0) {
       gsap.to(window, {
         scrollTo: { y: 0 },

@@ -1,4 +1,3 @@
-// Shared package data for the entire application
 export const packages = [
   {
     id: 1,

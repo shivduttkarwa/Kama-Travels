@@ -188,7 +188,6 @@ const PackagesPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate title
       gsap.fromTo(titleRef.current,
         { opacity: 0, y: 30 },
         { 
@@ -200,7 +199,6 @@ const PackagesPage = () => {
         }
       );
 
-      // Animate package cards
       gsap.fromTo('.package-card',
         { opacity: 0, y: 50 },
         {

@@ -303,7 +303,6 @@ const Services = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(titleRef.current, 
         {
           opacity: 0,
@@ -323,7 +322,6 @@ const Services = () => {
         }
       );
 
-      // Cards animation
       gsap.fromTo(".service-card", 
         {
           opacity: 0,

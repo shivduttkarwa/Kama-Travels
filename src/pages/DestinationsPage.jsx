@@ -260,7 +260,6 @@ const Badge = styled.div`
 const categories = ['All', 'Domestic', 'International', 'Popular', 'Adventure', 'Beach', 'Mountain'];
 
 const destinations = [
-  // Domestic Destinations (10)
   {
     id: 1,
     name: 'Goa, India',
@@ -372,7 +371,6 @@ const destinations = [
     badge: 'Offbeat'
   },
   
-  // International Destinations (15 - Added more popular ones)
   {
     id: 11,
     name: 'Paris, France',
@@ -547,7 +545,6 @@ const DestinationsPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate title
       gsap.fromTo(titleRef.current,
         { opacity: 0, y: 30 },
         { 
@@ -559,7 +556,6 @@ const DestinationsPage = () => {
         }
       );
 
-      // Animate cards
       gsap.fromTo('.destination-card',
         { opacity: 0, y: 50 },
         {
@@ -590,7 +586,6 @@ const DestinationsPage = () => {
       );
 
   const handleBookNow = (destination) => {
-    // Navigate to booking form
     window.location.href = `/booking?destination=${encodeURIComponent(destination.name)}&price=${destination.price}`;
   };
 

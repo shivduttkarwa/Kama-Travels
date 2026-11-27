@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-// Simple test component
 function TestApp() {
   return (
     <div style={{ 
@@ -20,7 +19,6 @@ function TestApp() {
   )
 }
 
-// Import the full app after a delay to test
 setTimeout(() => {
   import('./App.jsx').then((AppModule) => {
     const App = AppModule.default;
@@ -40,7 +38,6 @@ setTimeout(() => {
   });
 }, 1000);
 
-// Render test component first
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <TestApp />

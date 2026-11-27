@@ -237,7 +237,6 @@ const BookingPage = () => {
   const formRef = useRef();
 
   useEffect(() => {
-    // Get destination and price from URL params
     const urlParams = new URLSearchParams(window.location.search);
     const destination = urlParams.get('destination');
     const price = urlParams.get('price');
@@ -246,7 +245,6 @@ const BookingPage = () => {
       setFormData(prev => ({ ...prev, destination }));
     }
 
-    // Animate form entrance
     const ctx = gsap.context(() => {
       gsap.fromTo('.form-animate',
         { opacity: 0, y: 30 },
@@ -272,12 +270,10 @@ const BookingPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       
-      // Reset form after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -285,7 +281,7 @@ const BookingPage = () => {
           lastName: '',
           email: '',
           phone: '',
-          destination: formData.destination, // Keep destination
+          destination: formData.destination,
           departureDate: '',
           returnDate: '',
           adults: '1',

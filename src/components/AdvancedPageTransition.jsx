@@ -19,7 +19,6 @@ const SimplePageTransition = ({ children }) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    // Smooth scroll to top on route change
     window.scrollTo({
       top: 0,
       left: 0,

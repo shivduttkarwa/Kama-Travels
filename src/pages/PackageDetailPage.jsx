@@ -323,16 +323,13 @@ const PackageDetailPage = () => {
   const navigate = useNavigate();
   const contentRef = useRef();
 
-  // Find package by slug
   const packageData = packages.find(pkg => pkg.slug === slug);
 
-  // Force scroll to top on route change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [slug]);
 
   useEffect(() => {
-    // Ensure page starts at the very top
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -342,7 +339,6 @@ const PackageDetailPage = () => {
       return;
     }
 
-    // Animate content with a slight delay to ensure scroll reset
     const timer = setTimeout(() => {
       const ctx = gsap.context(() => {
         gsap.fromTo('.fade-in',

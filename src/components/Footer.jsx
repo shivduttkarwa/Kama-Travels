@@ -23,7 +23,6 @@ const FooterGrid = styled.div`
   display: grid;
   gap: 40px;
   
-  /* Mobile layout: Quick Links and Support on top row, Follow Us on bottom */
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
     "quicklinks support"
@@ -66,7 +65,6 @@ const FooterWidget = styled.div`
     }
   }
   
-  /* Grid area assignments for mobile layout */
   &:nth-child(1) {
     grid-area: quicklinks;
     @media (max-width: ${theme.breakpoints.mobile}) {
@@ -213,7 +211,6 @@ const SocialIcons = styled.div`
     -webkit-user-select: none;
     user-select: none;
     
-    /* Facebook */
     &[aria-label="Facebook"] {
       background: #1877F2;
       
@@ -223,7 +220,6 @@ const SocialIcons = styled.div`
       }
     }
     
-    /* Instagram */
     &[aria-label="Instagram"] {
       background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
       
@@ -233,7 +229,6 @@ const SocialIcons = styled.div`
       }
     }
     
-    /* X (Twitter) */
     &[aria-label="X"] {
       background: #000000;
       
@@ -243,7 +238,6 @@ const SocialIcons = styled.div`
       }
     }
     
-    /* YouTube */
     &[aria-label="YouTube"] {
       background: #FF0000;
       
@@ -639,7 +633,6 @@ const FooterBottom = styled.div`
   }
 `;
 
-// Add keyframes for animation
 const GlobalStyle = styled.div`
   @keyframes moveRight {
     0% {
@@ -659,7 +652,6 @@ const Footer = () => {
         <FooterTop className="new_footer_top">
           <FooterWrapper>
             <FooterGrid>
-              {/* Quick Links */}
               <FooterWidget>
                 <h3 className="footer-title">Quick Links</h3>
                 <FooterList>
@@ -672,7 +664,6 @@ const Footer = () => {
                 </FooterList>
               </FooterWidget>
 
-              {/* Support */}
               <FooterWidget>
                 <h3 className="footer-title">Support</h3>
                 <FooterList>
@@ -684,7 +675,6 @@ const Footer = () => {
                 </FooterList>
               </FooterWidget>
 
-              {/* Follow Us */}
               <FooterWidget>
                 <h3 className="footer-title">Follow Us</h3>
                 <SocialIcons>

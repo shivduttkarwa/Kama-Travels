@@ -6,7 +6,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styled, { createGlobalStyle } from 'styled-components';
 
-// Pages
 import HomePage from './pages/HomePage';
 import DestinationsPage from './pages/DestinationsPage';
 import BookingPage from './pages/BookingPage';
@@ -20,12 +19,10 @@ import FAQPage from './pages/FAQPage';
 import CancellationPolicyPage from './pages/CancellationPolicyPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
 
-// Components
 import SimplePageTransition from './components/AdvancedPageTransition';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// Styles
 import { theme } from './styles/GlobalStyles';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -65,7 +62,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: inherit;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -83,7 +79,6 @@ const GlobalStyle = createGlobalStyle`
     background: #a8a8a8;
   }
 
-  /* Smooth page transitions */
   .page-transition {
     opacity: 0;
     transform: translateY(20px);
@@ -95,7 +90,6 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.6s ease-out;
   }
 
-  /* Loading animation */
   .loading-overlay {
     position: fixed;
     top: 0;
@@ -129,7 +123,6 @@ const GlobalStyle = createGlobalStyle`
     100% { transform: rotate(360deg); }
   }
 
-  /* Floating animation for elements */
   @keyframes float {
     0%, 100% {
       transform: translateY(0px);
@@ -143,7 +136,6 @@ const GlobalStyle = createGlobalStyle`
     animation: float 3s ease-in-out infinite;
   }
 
-  /* Pulse animation */
   @keyframes pulse {
     0% {
       box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
@@ -160,7 +152,6 @@ const GlobalStyle = createGlobalStyle`
     animation: pulse 2s infinite;
   }
 
-  /* Reveal animation classes */
   .reveal {
     opacity: 0;
     transform: translateY(50px);
@@ -172,7 +163,6 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.6s ease-out;
   }
 
-  /* Slide animations */
   .slide-left {
     opacity: 0;
     transform: translateX(-50px);
@@ -195,7 +185,6 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.6s ease-out;
   }
 
-  /* Scale animation */
   .scale-in {
     opacity: 0;
     transform: scale(0.8);
@@ -299,7 +288,6 @@ const PlaneLoader = styled.div`
   width: 100px;
   height: 100px;
   
-  /* Outer glowing ring */
   &::before {
     content: '';
     position: absolute;
@@ -311,7 +299,6 @@ const PlaneLoader = styled.div`
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
   
-  /* Inner pulsing circle */
   &::after {
     content: '';
     position: absolute;
@@ -391,7 +378,6 @@ const AppContent = () => {
   const [hasInitialLoad, setHasInitialLoad] = useState(false);
 
   useEffect(() => {
-    // Show loading on any initial page load (refresh)
     if (!hasInitialLoad) {
       setIsLoading(true);
       
@@ -402,7 +388,6 @@ const AppContent = () => {
 
       return () => clearTimeout(timer);
     } else {
-      // For all other page navigations, no loading screen
       setIsLoading(false);
     }
   }, [location.pathname, hasInitialLoad]);

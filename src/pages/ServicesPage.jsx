@@ -298,7 +298,6 @@ const ServicesPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate title
       gsap.fromTo(titleRef.current,
         { opacity: 0, y: 30 },
         { 
@@ -310,7 +309,6 @@ const ServicesPage = () => {
         }
       );
 
-      // Animate service cards
       gsap.fromTo('.service-card',
         { opacity: 0, y: 50 },
         {

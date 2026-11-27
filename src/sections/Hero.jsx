@@ -225,7 +225,6 @@ const Hero = () => {
     return () => ctx.revert();
   }, [appReady]);
 
-  // Handle mobile video playback issues
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -236,19 +235,15 @@ const Hero = () => {
     };
 
     const handleCanPlay = () => {
-      // Ensure video plays smoothly on mobile
       video.play().catch(handleVideoError);
     };
 
-    // Add event listeners for better mobile support
     video.addEventListener('error', handleVideoError);
     video.addEventListener('canplay', handleCanPlay);
     
-    // Force video restart if it gets stuck
     const interval = setInterval(() => {
       if (video.paused && !video.ended) {
         video.play().catch(() => {
-          // If video keeps failing, hide it
           video.style.display = 'none';
         });
       }
@@ -288,10 +283,8 @@ const Hero = () => {
           setVideoLoaded(true);
         }}
         onLoadStart={(e) => {
-          // Force video to play on mobile
           const video = e.target;
           video.play().catch(() => {
-            // If autoplay fails, keep the background
             console.log('Video autoplay failed, using background');
           });
         }}

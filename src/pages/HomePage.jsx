@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Sections
 import Hero from '../sections/Hero';
 import Services from '../sections/Services';
 import Destinations from '../sections/Destinations';
@@ -13,12 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HomePage = () => {
   useEffect(() => {
-    // Set up scroll-triggered animations
     const setupScrollAnimations = () => {
-      // Refresh ScrollTrigger after all content is loaded
       ScrollTrigger.refresh();
 
-      // Add smooth scroll behavior for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -32,7 +28,6 @@ const HomePage = () => {
         });
       });
 
-      // Add reveal animations for elements with reveal class
       const revealElements = document.querySelectorAll('.reveal, .slide-left, .slide-right, .scale-in');
       
       revealElements.forEach(element => {
@@ -61,7 +56,6 @@ const HomePage = () => {
         );
       });
 
-      // Add parallax effect to sections
       gsap.utils.toArray('.parallax').forEach(section => {
         gsap.to(section, {
           yPercent: -50,
@@ -75,7 +69,6 @@ const HomePage = () => {
         });
       });
 
-      // Add hover animations to interactive elements
       const cards = document.querySelectorAll('.hover-lift');
       cards.forEach(card => {
         card.addEventListener('mouseenter', () => {

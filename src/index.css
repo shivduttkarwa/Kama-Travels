@@ -32,7 +32,6 @@ button {
   font-family: inherit;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }

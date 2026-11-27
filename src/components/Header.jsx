@@ -105,7 +105,6 @@ const LogoLink = styled(Link)`
     border-radius: 4px;
   }
   
-  /* Additional mobile-specific fixes */
   @media (max-width: ${theme.breakpoints.tablet}) {
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
     -webkit-focus-ring-color: rgba(0,0,0,0) !important;
@@ -417,51 +416,39 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Smooth menu close function for non-navigation clicks
   const handleMenuItemClick = () => {
-    // Start the closing animation by setting menu to false immediately
-    // This allows the slide-out animation to begin
     setTimeout(() => {
       setIsMenuOpen(false);
-    }, 100); // Small delay to allow click animation to start
+    }, 100);
   };
 
-  // Smooth navigation handler for menu links
   const handleSmoothNavigation = (path) => {
-    // Start the mobile menu slide-out animation immediately
     setIsMenuOpen(false);
     
-    // Give a small delay to let the slide-out animation start,
-    // then navigate while the menu continues sliding out
     setTimeout(() => {
       navigate(path);
-    }, 100); // Small delay to ensure slide-out starts smoothly
+    }, 100);
   };
 
-  // Enhanced hamburger menu toggle handler
   const handleMenuToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setIsMenuOpen(prev => !prev);
   };
 
-  // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  // Handle menu animation and body scroll
   useEffect(() => {
     const navLinks = document.querySelectorAll('.mobile-nav-link');
     const mobileFooter = document.querySelector('.mobile-menu-footer');
     
     if (isMenuOpen) {
-      // Prevent body scroll
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
       
-      // Animate in with delay
       setTimeout(() => {
         navLinks.forEach((link) => {
           link.classList.add('animate-in');
@@ -471,12 +458,10 @@ const Header = () => {
         }
       }, 300);
     } else {
-      // Restore body scroll
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.width = '';
       
-      // Animate out
       navLinks.forEach((link) => {
         link.classList.remove('animate-in');
       });
@@ -485,7 +470,6 @@ const Header = () => {
       }
     }
     
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = '';
       document.body.style.position = '';
@@ -497,7 +481,6 @@ const Header = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
       
-      // Only update active section if we're on the home page
       if (location.pathname === '/') {
         const sections = ['home', 'services', 'destinations', 'contact'];
         const scrollPosition = window.scrollY + 100;
@@ -523,7 +506,6 @@ const Header = () => {
 
   const scrollToSection = (sectionId) => {
     if (sectionId === 'home') {
-      // Scroll to top for home
       window.scrollTo({
         top: 0,
         behavior: 'smooth'

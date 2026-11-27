@@ -153,7 +153,6 @@ const LocationsPage = () => {
   const indianLocationsRef = useRef();
   const internationalLocationsRef = useRef();
 
-  // Indian destinations
   const indianDestinations = [
     "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", "Hyderabad", "Pune", "Ahmedabad",
     "Jaipur", "Surat", "Lucknow", "Kanpur", "Nagpur", "Indore", "Thane", "Bhopal",
@@ -164,7 +163,6 @@ const LocationsPage = () => {
     "Madurai", "Raipur", "Kota", "Guwahati", "Chandigarh", "Solapur", "Hubballi-Dharwad"
   ];
 
-  // International destinations
   const internationalDestinations = [
     "Paris", "London", "New York", "Tokyo", "Dubai", "Singapore", "Barcelona", "Rome",
     "Amsterdam", "Bangkok", "Istanbul", "Sydney", "Los Angeles", "Berlin", "Vienna",
@@ -177,7 +175,6 @@ const LocationsPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero animations
       gsap.fromTo(titleRef.current, 
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 1, delay: 0.5 }
@@ -188,7 +185,6 @@ const LocationsPage = () => {
         { opacity: 1, y: 0, duration: 1, delay: 0.7 }
       );
 
-      // Location boxes animations
       gsap.fromTo(".location-box", 
         { opacity: 0, y: 30 },
         { 

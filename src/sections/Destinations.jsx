@@ -247,7 +247,6 @@ const Badge = styled.div`
 const categories = ['All', 'Domestic', 'International'];
 
 const destinations = [
-  // 3 Domestic Destinations
   {
     id: 1,
     name: 'Kerala Backwaters',
@@ -284,7 +283,6 @@ const destinations = [
     badge: 'Heritage',
     slug: 'rajasthan-royal-heritage'
   },
-  // 3 International Destinations
   {
     id: 4,
     name: 'Dubai Luxury Experience',
@@ -331,7 +329,6 @@ const Destinations = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(titleRef.current, 
         {
           opacity: 0,
@@ -351,7 +348,6 @@ const Destinations = () => {
         }
       );
 
-      // Cards animation
       gsap.fromTo(".destination-card", 
         {
           opacity: 0,
